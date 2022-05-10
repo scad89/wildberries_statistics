@@ -26,6 +26,7 @@ python-dotenv
 celery
 redis
 flower
+# django-debug-toolbar
 
 
 
