@@ -1,4 +1,5 @@
 sqlparse
+beautifulsoup4
 coreapi
 coreschema
 Django>=2.2,<4.1
@@ -15,6 +16,7 @@ django-templated-mail
 django-taggit
 gunicorn
 Jinja2
+lxml
 pip-compile-multi
 psycopg2
 psycopg2-binary
@@ -23,9 +25,12 @@ pytest-cov
 pytest-django
 python-dateutil
 python-dotenv
+requests 
+selenium
 celery
 redis
 flower
+webdriver-manager
 # django-debug-toolbar
 
 
