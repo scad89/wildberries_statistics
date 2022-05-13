@@ -1,21 +1,16 @@
 from rest_framework import generics
-from .models import UserArticle
-from .serializers import AddArticleSerializer, ArticleSerializer, DeleteArticleSerializer
+from .models import UserArticle, RecordCard
+from rest_framework import viewsets
+from .serializers import ArticleSerializer, RecordCardSerializer
 
 
-class NewArticleCreateAPIView(generics.CreateAPIView):
-    """Add new article"""
-    queryset = UserArticle.objects.filter(unvisible=False)
-    serializer_class = AddArticleSerializer
-
-
-class GetArticleListView(generics.ListAPIView):
-    """Show all article"""
-    queryset = UserArticle.objects.filter(unvisible=False)
+class ArticleViewSet(viewsets.ModelViewSet):
+    """Add, show all and delete article"""
     serializer_class = ArticleSerializer
+    queryset = UserArticle.objects.all()
 
 
-class DeleteArticleRetrieveUpdateApiView(generics.RetrieveUpdateAPIView):
-    """Delete articles"""
-    queryset = UserArticle.objects.filter(unvisible=False)
-    serializer_class = DeleteArticleSerializer
+class RecordCardListView(viewsets.ModelViewSet):
+    """Вывод списка вопросов"""
+    queryset = RecordCard.objects.all()
+    serializer_class = RecordCardSerializer
