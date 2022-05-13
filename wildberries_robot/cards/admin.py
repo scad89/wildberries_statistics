@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import UserArticle, RecordCard
 
-# Register your models here.
+admin.site.register(UserArticle)
+admin.site.register(RecordCard)

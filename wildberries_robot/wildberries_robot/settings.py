@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'authentication',
     'cards',
     'rest_framework',
+    'django_celery_beat',
     'debug_toolbar',
 ]
 
@@ -162,3 +163,11 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INTERNAL_IPS = ['127.0.0.1', ]
+
+REDIS_HOST = os.environ.get('REDIS_HOST')
+REDIS_PORT = os.environ.get('REDIS_PORT')
+
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+CELERY_BROCKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

@@ -1,26 +1,15 @@
 from rest_framework import serializers
-from .models import UserArticle
-
-
-class AddArticleSerializer(serializers.ModelSerializer):
-    """Add article"""
-
-    class Meta:
-        model = UserArticle
-        fields = ['article']
+from .models import UserArticle, RecordCard
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-    """Show all articles"""
-
+    """Add, show all and delete article"""
     class Meta:
         model = UserArticle
-        exclude = ['unvisible']
+        fields = "__all__"
 
 
-class DeleteArticleSerializer(serializers.ModelSerializer):
-    """Delete articles"""
-
+class RecordCardSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserArticle
-        fields = ['unvisible']
+        model = RecordCard
+        fields = "__all__"
