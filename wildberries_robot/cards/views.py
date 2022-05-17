@@ -12,7 +12,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = UserArticle.objects.all()
 
 
-class GetStatiticsRetrieveAPIView(generics.RetrieveAPIView):
+class RecordCardListView(generics.RetrieveAPIView):
     """Data for results in statistics"""
     queryset = RecordCard.objects.all()
     serializer_class = RecordCardSerializer
@@ -23,6 +23,5 @@ class GetStatiticsRetrieveAPIView(generics.RetrieveAPIView):
         show_stat = RecordCard.objects.filter(id_article=kwargs['pk']).filter(
             record_time__range=[start_date, end_date]
         )[::interval]
-        print(show_stat)
         serializer = RecordCardSerializer(show_stat, many=True)
         return Response(serializer.data)
