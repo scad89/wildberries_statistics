@@ -10,8 +10,13 @@ def complete_task(task):
 
 
 def check_periodic_task(article):
-    return PeriodicTask.objects.get(
-        name=f'Create task periodic task for {article}')
+    try:
+        task = PeriodicTask.objects.get(
+            name=f'Create task periodic task for {article}')
+        return task
+    except Exception as exc:
+        print(exc)
+        return None
 
 
 def record_to_db(get_id, name_of_product,
@@ -35,10 +40,11 @@ def create_periodic_task(article):
         every=1,
         period=IntervalSchedule.HOURS,
     )
+    now = timezone.now()
     return PeriodicTask.objects.create(
         name=f'Create task periodic task for {article}',
-        task='send_notification',
+        task='cards.tasks.parse_data',
         interval=schedule,
-        args=json.dumps([article]),
-        start_time=timezone.now(),
+        args=json.dumps([str(article)]),
+        start_time=now
     )
