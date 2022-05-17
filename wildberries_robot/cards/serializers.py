@@ -10,6 +10,10 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class RecordCardSerializer(serializers.ModelSerializer):
+    """Data for results in statistics"""
+    id_article = serializers.SlugRelatedField(
+        slug_field='article', read_only=True)
+
     class Meta:
         model = RecordCard
         fields = "__all__"

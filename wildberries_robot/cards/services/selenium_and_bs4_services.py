@@ -7,13 +7,6 @@ from selenium import webdriver
 import requests
 import time
 
-options = Options()
-options.add_argument('headless')
-driver = webdriver.Chrome(service=Service(
-    ChromeDriverManager().install()),
-    options=options
-)
-
 
 def price_to_int(soup_price):
     return int(''.join(soup_price.split()))
@@ -22,6 +15,12 @@ def price_to_int(soup_price):
 def getting_data_with_selenium(article):
     url = f'https://www.wildberries.ru/catalog/{article}/detail.aspx'
     try:
+        options = Options()
+        options.add_argument('headless')
+        driver = webdriver.Chrome(service=Service(
+            ChromeDriverManager().install()),
+            options=options
+        )
         driver.get(url=url)
         time.sleep(3)
         driver.find_element(

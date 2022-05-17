@@ -3,3 +3,4 @@
 /my_test
 *.pyc
 wildberries_robot/.env
+wildberries_robot/celerybeat-schedule
