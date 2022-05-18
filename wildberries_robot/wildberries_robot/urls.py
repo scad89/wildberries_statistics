@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .yasg import urlpatterns as doc_urls
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -22,3 +23,5 @@ urlpatterns = [
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += doc_urls

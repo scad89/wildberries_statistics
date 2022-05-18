@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_celery_beat',
     'debug_toolbar',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
