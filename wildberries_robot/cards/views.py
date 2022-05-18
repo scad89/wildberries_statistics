@@ -1,19 +1,21 @@
 from rest_framework.response import Response
+from rest_framework import permissions
 from cards.services.getting_stats_services import getting_params
-from rest_framework import generics
+from rest_framework import generics, viewsets, status
 from .models import UserArticle, RecordCard
-from rest_framework import viewsets
 from .serializers import ArticleSerializer, RecordCardSerializer
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
     """Add, show all and delete article"""
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = ArticleSerializer
     queryset = UserArticle.objects.all()
 
 
 class RecordCardListView(generics.RetrieveAPIView):
     """Data for results in statistics"""
+    permission_classes = [permissions.IsAuthenticated]
     queryset = RecordCard.objects.all()
     serializer_class = RecordCardSerializer
 
@@ -24,4 +26,4 @@ class RecordCardListView(generics.RetrieveAPIView):
             record_time__range=[start_date, end_date]
         )[::interval]
         serializer = RecordCardSerializer(show_stat, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
