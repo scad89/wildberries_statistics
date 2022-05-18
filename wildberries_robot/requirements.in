@@ -12,7 +12,6 @@ django-ckeditor
 django-cors-headers
 django-js-asset
 django-ranged-response
-django-simple-captcha
 django-templated-mail
 django-taggit
 gunicorn
@@ -33,7 +32,7 @@ celery
 redis
 flower
 webdriver-manager
-# django-debug-toolbar
+django-debug-toolbar
 
 
 
