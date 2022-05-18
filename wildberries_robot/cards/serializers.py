@@ -4,6 +4,7 @@ from .models import UserArticle, RecordCard
 
 class ArticleSerializer(serializers.ModelSerializer):
     """Add, show all and delete article"""
+
     class Meta:
         model = UserArticle
         fields = "__all__"

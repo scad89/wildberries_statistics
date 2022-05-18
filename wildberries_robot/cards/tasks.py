@@ -1,6 +1,7 @@
 from wildberries_robot.celery import app
 from celery.utils.log import get_task_logger
 from .models import UserArticle
+import requests
 from cards.services.selenium_and_bs4_services import (
     getting_data_with_selenium,
     getting_brand_and_name_of_product,
@@ -31,7 +32,7 @@ def parse_data(self, article):
                      price_without_discount,
                      price_with_discount,
                      brand,
-                     supplier
+                     supplier,
                      )
         new_task = check_periodic_task(article)
         if new_task:
@@ -52,5 +53,3 @@ def cancel_periodic_task(self, article):
     if task_success:
         complete_task(task_success)
         return logger.info(f'Periodic task for {article} removed')
-    else:
-        return logger.info(f"Periodic task for {article} didn'n find")

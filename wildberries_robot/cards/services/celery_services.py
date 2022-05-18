@@ -23,7 +23,7 @@ def record_to_db(get_id, name_of_product,
                  price_without_discount,
                  price_with_discount,
                  brand,
-                 supplier
+                 supplier,
                  ):
     return RecordCard.objects.create(
         id_article=get_id,
@@ -37,8 +37,8 @@ def record_to_db(get_id, name_of_product,
 
 def create_periodic_task(article):
     schedule, created = IntervalSchedule.objects.get_or_create(
-        every=1,
-        period=IntervalSchedule.HOURS,
+        every=60,
+        period=IntervalSchedule.SECONDS,  # IntervalSchedule.HOURS every=1
     )
     now = timezone.now()
     return PeriodicTask.objects.create(

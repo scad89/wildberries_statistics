@@ -4,6 +4,7 @@ coreapi
 coreschema
 Django>=2.2,<4.1
 djangorestframework
+djangorestframework-simplejwt
 drf-yasg
 django-annoying
 django-celery-beat
@@ -11,13 +12,13 @@ django-ckeditor
 django-cors-headers
 django-js-asset
 django-ranged-response
-django-simple-captcha
 django-templated-mail
 django-taggit
 gunicorn
 Jinja2
 lxml
 pip-compile-multi
+pyjwt
 psycopg2
 psycopg2-binary
 pytest
@@ -31,7 +32,7 @@ celery
 redis
 flower
 webdriver-manager
-# django-debug-toolbar
+django-debug-toolbar
 
 
 
