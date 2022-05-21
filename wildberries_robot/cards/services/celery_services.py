@@ -9,7 +9,7 @@ def complete_task(task):
     return task.save()
 
 
-def check_periodic_task(article):
+def get_periodic_task(article):
     try:
         task = PeriodicTask.objects.get(
             name=f'Create task periodic task for {article}')
@@ -37,8 +37,8 @@ def record_to_db(get_id, name_of_product,
 
 def create_periodic_task(article):
     schedule, created = IntervalSchedule.objects.get_or_create(
-        every=60,
-        period=IntervalSchedule.SECONDS,  # IntervalSchedule.HOURS every=1
+        every=1,
+        period=IntervalSchedule.HOURS,
     )
     now = timezone.now()
     return PeriodicTask.objects.create(

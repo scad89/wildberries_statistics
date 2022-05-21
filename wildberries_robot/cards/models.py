@@ -2,7 +2,7 @@ from django.db import models
 
 
 class UserArticle(models.Model):
-    article = models.PositiveBigIntegerField()
+    article = models.PositiveBigIntegerField(unique=True)
 
     def __str__(self):
         return str(self.article)

@@ -43,13 +43,13 @@ def getting_data_with_bs4(soup):
     return price_to_int(actual_price), price_to_int(price_without_discounts)
 
 
-def getting_seller(article):
+def getting_supplier(article):
     url = requests.get(
         f'https://wbx-content-v2.wbstatic.net/sellers/{article}.json')
     return url.json()['supplierName']
 
 
-def getting_brand_and_name_of_product(article):
+def getting_brand_and_product_name(article):
     url = requests.get(
         f'https://wbx-content-v2.wbstatic.net/ru/{article}.json')
     return url.json()['selling']['brand_name'], url.json()['imt_name']
