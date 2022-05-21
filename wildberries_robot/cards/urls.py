@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('<int:pk>/',
-         views.RecordCardListView.as_view(), name='questions'),
+         views.RecordCardListView.as_view(), name='show_statistics'),
 ]
